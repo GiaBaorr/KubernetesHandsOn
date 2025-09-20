@@ -1,0 +1,31 @@
+apiVersion: apps/v1 # k8s version
+kind: Deployment # Type of object to be created
+metadata: # Metadata about the object
+  name: my-app-deployment # Name of the deployment
+spec: # Specification of the desired behavior of the deployment
+  replicas: 3 # Number of desired pods
+  selector: # Selector to identify the pods managed by this deployment
+    matchLabels: # select pods with these matching labels, in this case: find pod with a label app=my-app and tier=backend
+      app: my-app
+      tier: backend
+    # matchExpressions:
+    #   - {key: app, operator: In, values: [my-app, my-app2]}
+  template: # Template for the pods
+    metadata:
+      labels: # Labels to be applied to the pods and will be used by the selector above
+        app: my-app
+        tier: backend
+    spec:
+      containers:
+      - name: my-container
+        image: my-image:latest
+        imagePullPolicy: Always
+        livenessProbe: # Check if the container is alive
+          httpGet:
+            path: /
+            port: 8080
+          periodSeconds: 10
+          initialDelaySeconds: 5
+          failureThreshold: 3
+        ports:
+        - containerPort: 8080

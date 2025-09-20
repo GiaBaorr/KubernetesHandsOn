@@ -88,3 +88,7 @@ Rollback deployment with --to-revision
 - Clusters cannot access local Docker images directly.
 - Pods run on worker nodes with local IPs; use a Service object to access them.
 
+
+## Deploy declaratively
+`kubectl apply -f=deployment.yaml`
+`kebectl delete -f=deployment.yaml`
