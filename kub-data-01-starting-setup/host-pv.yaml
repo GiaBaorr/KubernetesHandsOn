@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: host-pv
+spec:
+  capacity:
+    storage: 2Gi
+  volumeMode: Filesystem
+  storageClassName: standard
+  accessModes:
+    - ReadWriteOnce # read write by a single node
+    # - ReadOnlyMany # read only by many nodes
+    # - ReadWriteMany # read write by many nodes
+  hostPath:
+    path: /data # Path on the Windows -> wsl (ubuntu) -> Minikube VM
+    type: DirectoryOrCreate

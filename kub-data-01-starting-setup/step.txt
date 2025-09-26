@@ -1,0 +1,13 @@
+build image
+push to dockerhub
+build deployment to use the docker image
+build service to expose
+
+kubectl app 2 files
+
+
+minikube tunnel
+minikube service story-service
+kubectl port-forward service/story-service 8080:80
+
+localhost:8080/story

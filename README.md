@@ -17,7 +17,8 @@ Kubernetes is an open-source platform for automating deployment, scaling, and ma
 #### Pod
 - Smallest deployable unit
 - Runs inside a worker node with cluster-internal IP
-- Can contain multiple containers sharing resources
+- Can contain **multiple containers** sharing resources
+- Contain **volumes** inside
 
 #### Deployment (Controller)
 - Manages pods: create, move, pause, delete, roll back
