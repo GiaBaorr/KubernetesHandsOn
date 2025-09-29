@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: auth-service
+spec:
+  selector:
+    app: auth
+  type: ClusterIP # only reachable inside the cluster
+  ports:
+    - protocol: TCP
+      port: 80 # outside facing port
+      targetPort: 80 # port inside the container

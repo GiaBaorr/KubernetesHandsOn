@@ -11,3 +11,8 @@ minikube service story-service
 kubectl port-forward service/story-service 8080:80
 
 localhost:8080/story
+
+
+kubectl port-forward service/users-service 8080:8080 &
+kubectl port-forward service/tasks-service 8000:8000 &
+kubectl port-forward service/frontend-service 3000:3000

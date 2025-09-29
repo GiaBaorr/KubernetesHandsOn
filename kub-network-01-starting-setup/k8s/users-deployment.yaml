@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: users-deploymentcd
+  labels:
+    app: users
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: users
+  template:
+    metadata:
+      labels:
+        app: users
+    spec:
+      containers:
+        - name: users
+          image: baozach123/kub-demo-users:latest
+          env:
+            - name: AUTH_ADDRESS
+              # value: localhost # container in same pod can use localhost
+              # value: "192.xxxx" # manually get Cluster IP from kubectl
+              value: "auth-service.default" # use the service name & namespace to reach the auth service
